@@ -8,7 +8,7 @@ namespace Employees.Services.Interfaces
     {
         void SetDataPath(string dataPath);
         IEnumerable<Employee> ListEmployees();
-        IEnumerable<Employee> ListEmployeesCompleted5YearsOrMore();
+        IEnumerable<Employee> ListEmployees(DateTime startDate);
         bool DeleteEmployee(int idEmployee);
 
     }

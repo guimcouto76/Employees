@@ -20,7 +20,8 @@ export class EmployeesComponent implements OnInit, OnDestroy {
   }
 
   getEmployees() {
-    this.employees = this.employeeService.getEmployeesCompleted5Years();
+    const startDate = '2010-01-01';
+    this.employees = this.employeeService.getEmployees(startDate);
   }
 
   deleteEmployee(idEmployee: number) {

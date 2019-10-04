@@ -6,20 +6,7 @@ namespace Employees.Tests.UnitTests
     [TestClass]
     public class EmployeeServicesTests
     {
-        [TestMethod]
-        public void ListEmployeesCompleted5YearsOrMore_WhenGet_ReturnNotNull()
-        {
-            // Arrange
-            var _employeeServices = new EmployeeServices();
-
-            // Act
-            var result = _employeeServices.ListEmployeesCompleted5YearsOrMore();
-
-            // Assert
-            Assert.IsNotNull(result);
-        }
-
-
+       
         [TestMethod]
         public void DeleteEmployee_WhenEployeeExists_ReturnTrue()
         {

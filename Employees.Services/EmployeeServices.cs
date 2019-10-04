@@ -39,18 +39,27 @@ namespace Employees.Services
 
         public IEnumerable<Employee> ListEmployees()
         {
-            using (var reader = new StreamReader(_dataPath)) {
-                using (var csv = new CsvReader(reader, new CsvHelper.Configuration.Configuration { Delimiter = "," , HasHeaderRecord = true } ))
+            using (var reader = new StreamReader(_dataPath))
+            {
+                using (var csv = new CsvReader(reader, new CsvHelper.Configuration.Configuration { Delimiter = ",", HasHeaderRecord = true }))
                 {
-                    var employees = csv.GetRecords<Employee>().ToList(); 
+                    var employees = csv.GetRecords<Employee>().ToList();
                     return employees;
                 }
             }
         }
 
-        public IEnumerable<Employee> ListEmployeesCompleted5YearsOrMore()
+        public IEnumerable<Employee> ListEmployees(DateTime startDate)
         {
-            return ListEmployees().Where(e => Convert.ToDateTime(e.StartDate, new System.Globalization.CultureInfo("en-US")) < DateTime.Now.AddYears(-5) && !e.IsDeleted).ToList();
+            using (var reader = new StreamReader(_dataPath)) {
+                using (var csv = new CsvReader(reader, new CsvHelper.Configuration.Configuration { Delimiter = "," , HasHeaderRecord = true } ))
+                {
+                    var employees = csv.GetRecords<Employee>()
+                        .Where(e => Convert.ToDateTime(e.StartDate, new System.Globalization.CultureInfo("en-US")) >= startDate && !e.IsDeleted)
+                        .ToList();
+                    return employees;
+                }
+            }
         }
     }
 }

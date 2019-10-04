@@ -15,8 +15,8 @@ export class EmployeeService extends BaseService {
     super();
   }
 
-  public getEmployeesCompleted5Years(): Observable<Employee[]> {
-    const url = `${API_URL}/employees/completed5Years`;
+  public getEmployees(startDate: string): Observable<Employee[]> {
+    const url = `${API_URL}/employees/?startDate=${startDate}`;
 
     return this.httpClient.get<Employee[]>(url).pipe(
       catchError(this.handleError)

@@ -31,11 +31,11 @@ namespace Employees.RestApi.Controllers
 
         // GET: api/Employees
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(DateTime startDate)
         {
             try
             {
-                var employees = _employeeServices.ListEmployees();
+                var employees = _employeeServices.ListEmployees(startDate);
                 return Ok(employees);
             }
             catch (Exception ex)
@@ -45,23 +45,6 @@ namespace Employees.RestApi.Controllers
             }
         }
 
-        // GET: api/Employees/Completed5Years
-        [HttpGet]
-        [Route("Completed5Years")]
-        public IActionResult GetCompleted5Years()
-        {
-            try
-            {
-                var employees = _employeeServices.ListEmployeesCompleted5YearsOrMore();
-                return Ok(employees);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong inside GetCompleted5Years action: {ex.Message}");
-                return StatusCode(500, "Internal server error");
-            }
-
-        }
 
         // DELETE: api/Employees/5
         [HttpDelete("{id}")]
