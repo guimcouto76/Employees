@@ -1,5 +1,5 @@
 EmployeId,FirstName,LastName,MiddleInitial,StartDate,IsDeleted
-1," John"," Doe"," "," 07/15/2001",False
+1," John"," Doe"," "," 07/15/2001",True
 2," John"," Smith"," "," 03/1/2009",True
 3," Alex"," Doe"," L"," 02/11/2012",False
 4," Alice"," Shaw"," K"," 04/12/2012",True

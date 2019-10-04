@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <h1>Employees who have completed 5 years or more</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Employee Id</th>
+        <th scope="col">Employee Name</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees | async">
+        <th scope="row">{{ employee.employeId }}</th>
+        <td>{{ employee.firstName }} {{ employee.middleInitial }} {{ employee.lastName }}</td>
+        <td>{{ employee.startDate | date: 'dd/MM/yyyy'}}</td>
+        <td><button type="button" class="btn btn-danger" *ngIf="!employee.isDeleted" (click)="deleteEmployee(employee.employeId)">DELETE</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

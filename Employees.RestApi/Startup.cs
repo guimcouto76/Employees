@@ -61,6 +61,7 @@ namespace Employees.RestApi
             }
 
             app.UseHttpsRedirection();
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseMvc();
         }
     }
